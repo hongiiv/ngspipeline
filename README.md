@@ -11,12 +11,20 @@ Docker 수행시 로컬의 /bio 폴더를 컨테이너의 /bio 폴더에 매핑�
 
 ## 실행하기
 * 리눅스 (우분투 12.04) 서버 준비
+
 * reference genomes 데이터 (25 GB), 압축파일(20 GB) 총 50 GB 이상의 DISK 준비 (/bio 폴더로 마운트)
+
 $ cd /bio
+
 $ wget https://raw.githubusercontent.com/hongiiv/ngspipeline/master/prepare.sh
+
 $ sh prepare.sh
+
 * 도커 컨테이너에서
+
 $ wget https://raw.githubusercontent.com/hongiiv/ngspipeline/master/getdata.sh
+
 $ sh getdata.sh
+
 * 파이프라인 분석 결과는
 $ ls /bio/workflow-날짜
