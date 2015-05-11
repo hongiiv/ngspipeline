@@ -6,7 +6,7 @@ cd /bio
 DATE=`date +%Y-%m-%d`
 mkdir -p workflow-${DATE}/config workflow-${DATE}/input workflow-${DATE}/work
 cd workflow-${DATE}/config
-wget https://raw.githubusercontent.com/chapmanb/bcbio-nextgen/master/config/examples/cancer-dream-syn3.yaml
+wget --no-check-certificate https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/cancer-dream-syn3.yaml
 
 rm -rf /usr/local/share/bcbio/genomes
 rm -rf /usr/local/share/bcbio/galaxy
