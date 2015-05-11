@@ -26,10 +26,10 @@ wget --no-check-certificate https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694
 wget --no-check-certificate https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/synthetic_challenge_set3_tumor_NGv3_2.fq.gz
 
 # Evaluation data and BED files
-wget https://s3.amazonaws.com/bcbio_nextgen/dream/synthetic_challenge_set3_tumor_20pctmasked_truth.tar.gz
+wget --no-check-certificate https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/synthetic_challenge_set3_tumor_20pctmasked_truth.tar.gz
 tar -xzvpf synthetic_challenge_set3_tumor_20pctmasked_truth.tar.gz
-wget -O refseq-merged.bed.gz https://s3.amazonaws.com/bcbio_nextgen/dream/refseq-merged.bed.gz
-wget -O NGv3.bed.gz https://s3.amazonaws.com/bcbio_nextgen/NGv3.bed.gz
+wget -O refseq-merged.bed.gz --no-check-certificate https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/refseq-merged.bed.gz
+wget -O NGv3.bed.gz --no-check-certificate https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/NGv3.bed.gz
 gunzip *.bed.gz
 
 cd /bio/workflow-${DATE}/work
