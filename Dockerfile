@@ -26,3 +26,21 @@ RUN mkdir -p /tmp/bcbio-nextgen-install && cd /tmp/bcbio-nextgen-install && \
     https://raw.githubusercontent.com/hongiiv/ngspipeline/master/bcbio-nextgen-install.py && \
     python bcbio_nextgen_install.py /usr/local/share/bcbio \
       --nodata --sudo 
+RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --sudo --tooldir=/usr/local --tools
+
+ENV PATH /usr/local/bin:/usr/local/share/bcbio-nextgen/anaconda/bin:${PATH}
+ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
+ENV PERL5LIB /usr/local/lib/perl5:/usr/local/lib/perl5/site_perl:${PERL5LIB}
+
+RUN echo 'export PATH=/usr/local/bin:$PATH' >> /etc/profile.d/bcbio.sh && \
+    echo 'export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH' >> /etc/profile.d/bcbio.sh && \
+    echo 'export PERL5LIB=/usr/local/lib/perl5:/usr/local/lib/perl5/site_perl:${PERL5LIB}' >> /etc/profile.d/bcbio.sh && \
+    echo '/usr/local/lib' >> /etc/ld.so.conf.d/bcbio.conf && ldconfig && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* /var/tmp/* && \
+    /usr/local/share/bcbio/anaconda/bin/conda remove --yes qt && \
+    /usr/local/share/bcbio/anaconda/bin/conda clean --yes --tarballs && \
+    rm -rf /usr/local/share/bcbio-nextgen/anaconda/pkgs/qt* && \
+    rm -rf $(brew --cache) && \
+    rm -rf /.cpanm && \
+    rm -rf /tmp/bcbio-nextgen-install
