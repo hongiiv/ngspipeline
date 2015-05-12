@@ -51,7 +51,6 @@ RUN echo 'export PATH=/usr/local/bin:$PATH' >> /etc/profile.d/bcbio.sh && \
 RUN mkdir -p /bio/ && \
     mkdir -p /tmp/bcbio-nextgen && \
     mv /usr/local/share/bcbio/galaxy/bcbio_system.yaml /usr/local/share/bcbio/config && \
-    rmdir /usr/local/share/bcbio/galaxy && \
     ln -s /bio/galaxy /usr/local/share/bcbio/galaxy && \
     ln -s /bio/genomes /usr/local/share/bcbio/genomes && \
     chmod a+rwx /usr/local/share/bcbio && \
