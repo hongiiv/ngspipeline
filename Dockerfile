@@ -24,8 +24,7 @@ RUN mkdir -p /tmp/fuse-hack && cd /tmp/fuse-hack && \
 RUN mkdir -p /tmp/bcbio-nextgen-install && cd /tmp/bcbio-nextgen-install && \
     wget --no-check-certificate \
       https://raw.githubusercontent.com/hongiiv/ngspipeline/master/bcbio_nextgen_install.py && \
-    python bcbio_nextgen_install.py /usr/local/share/bcbio \
-      --nodata --sudo
+    python bcbio_nextgen_install.py /usr/local/share/bcbio --nodata --sudo
 RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --sudo --tooldir=/usr/local --tools
 RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextget.py upgrade --tools --toolplus data
 
