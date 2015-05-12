@@ -26,7 +26,11 @@ RUN mkdir -p /tmp/bcbio-nextgen-install && cd /tmp/bcbio-nextgen-install && \
       https://raw.githubusercontent.com/hongiiv/ngspipeline/master/bcbio_nextgen_install.py && \
     python bcbio_nextgen_install.py /usr/local/share/bcbio --nodata
 RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --sudo --tooldir=/usr/local --tools
-RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --tools --toolplus data
+RUN wget --no-check-certificat https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/toolplus.tar.gz && \
+    tar xvfz toolplus.tar.gz && \
+    /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --tools \
+    --toolplus gatk=./toolplus/gatk/3.2-2-gec30cee/GenomeAnalysisTK.jar \
+    --toolplus mutect=./toolplus/mutect/1.1.7/mutect-1.1.7.jar
 
 ENV PATH /usr/local/bin:/usr/local/share/bcbio-nextgen/anaconda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
