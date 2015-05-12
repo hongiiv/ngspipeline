@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y build-essential zlib1g-dev wget curl py
 RUN apt-get install -y openjdk-7-jdk openjdk-7-jre ruby libncurses5-dev libcurl4-openssl-dev libbz2-dev \
     unzip pigz bsdmainutils
 
-# Fake a fuse install; openjdk pulls this in 
+# Fake a fuse install; openjdk pulls this in
 # https://github.com/dotcloud/docker/issues/514
 # https://gist.github.com/henrik-muehe/6155333
 RUN mkdir -p /tmp/fuse-hack && cd /tmp/fuse-hack && \
@@ -24,9 +24,9 @@ RUN mkdir -p /tmp/fuse-hack && cd /tmp/fuse-hack && \
 RUN mkdir -p /tmp/bcbio-nextgen-install && cd /tmp/bcbio-nextgen-install && \
     wget --no-check-certificate \
       https://raw.githubusercontent.com/hongiiv/ngspipeline/master/bcbio_nextgen_install.py && \
-    python bcbio_nextgen_install.py /usr/local/share/bcbio --nodata --sudo
+    python bcbio_nextgen_install.py /usr/local/share/bcbio --nodata
 RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --sudo --tooldir=/usr/local --tools
-RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextget.py upgrade --tools --toolplus data
+RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --tools --toolplus data
 
 ENV PATH /usr/local/bin:/usr/local/share/bcbio-nextgen/anaconda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
