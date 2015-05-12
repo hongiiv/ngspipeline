@@ -30,7 +30,7 @@ RUN wget --no-check-certificat https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97
     tar xvfz toolplus.tar.gz && \
     /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --tools \
     --toolplus gatk=./toolplus/gatk/3.2-2-gec30cee/GenomeAnalysisTK.jar \
-    --toolplus mutect=./toolplus/mutect/1.1.7/mutect-1.1.7.jar
+    --toolplus mutect=./toolplus/mutect/1.1.7/muTect-1.1.7.jar
 
 ENV PATH /usr/local/bin:/usr/local/share/bcbio-nextgen/anaconda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
