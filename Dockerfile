@@ -27,6 +27,7 @@ RUN mkdir -p /tmp/bcbio-nextgen-install && cd /tmp/bcbio-nextgen-install && \
     python bcbio_nextgen_install.py /usr/local/share/bcbio \
       --nodata --sudo 
 RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextgen.py upgrade --sudo --tooldir=/usr/local --tools
+RUN /usr/local/share/bcbio/anaconda/bin/bcbio_nextget.py upgrade --tools --toolplus data
 
 ENV PATH /usr/local/bin:/usr/local/share/bcbio-nextgen/anaconda/bin:${PATH}
 ENV LD_LIBRARY_PATH /usr/local/lib:${LD_LIBRARY_PATH}
@@ -44,3 +45,12 @@ RUN echo 'export PATH=/usr/local/bin:$PATH' >> /etc/profile.d/bcbio.sh && \
     rm -rf $(brew --cache) && \
     rm -rf /.cpanm && \
     rm -rf /tmp/bcbio-nextgen-install
+RUN mkdir -p /bio/ && \
+    mkdir -p /tmp/bcbio-nextgen && \
+    mv /usr/local/share/bcbio/galaxy/bcbio_system.yaml /usr/local/share/bcbio/config && \
+    rmdir /usr/local/share/bcbio/galaxy && \
+    ln -s /bio/galaxy /usr/local/share/bcbio/galaxy && \
+    ln -s /bio/genomes /usr/local/share/bcbio/genomes && \
+    chmod a+rwx /usr/local/share/bcbio && \
+    chmod a+rwx /usr/local/share/bcbio/config && \
+    chmod a+rwx /usr/local/share/bcbio/config/*.yaml
