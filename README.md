@@ -2,6 +2,9 @@
 
 bcbio의 파이프라인을 Docker를 이용하여 수행하는데 필요한 파일
 
+## Dockerfile
+ $ docker build -t hongiiv/bcbio
+
 ## prepare.sh
 리눅스 서버에 Docker를 설치하고 파이프라인 구동에 필요한 genome reference 파일과 galaxy 설정 파일을 다운로드 한다.
 Docker 수행시 로컬의 /bio 폴더를 컨테이너의 /bio 폴더에 매핑한다.
