@@ -15,7 +15,9 @@ wget --no-check-certificat https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-
 wget --no-check-certificat https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/genomes.tar.gzah
 wget --no-check-certificat https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/genomes.tar.gzai
 cat genomes.tar.gz* | tar xvfz -
-rm -rf galaxy.tar.gz genomes.bwa.tar.gz genomes.seq.tar.gz genomes.variation.tar.gz
+wget --no-check-certificat https://ssproxy.ucloudbiz.olleh.com/v1/AUTH_f1b97694-00cd-4e06-b9f3-30a0f9d01f66/bcbio/galaxy.tar.gz
+tar xvfz galaxy.tar.gz
+rm -rf galaxy.tar.gz genomes.tar.gza* 
 
 # Setup base system
 apt-get update -y && apt-get install linux-image-generic-lts-trusty -y
